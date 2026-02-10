@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // CV Download Functionality
     function openCV() {
         // Create a PDF download link (you'll need to upload the actual PDF file)
-        const cvUrl = 'IAN_JEFA_CV.pdf'; // Replace with actual PDF file path
+        const cvUrl = 'https://drive.google.com/file/d/1HHsR6-Shfxz9fWQsM3oA72YOHaUJYBDj/download&id=drive_link'; // Replace with actual PDF file path
         
         // Create a temporary link element
         const link = document.createElement('a');
