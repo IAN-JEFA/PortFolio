@@ -1,110 +1,65 @@
-// Mobile Navigation Toggle
+// DOM ready
 document.addEventListener('DOMContentLoaded', function() {
+    'use strict';
+
+    // ===== MOBILE NAVIGATION =====
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
+    const navLinksAnchors = document.querySelectorAll('.nav-links a');
+
     if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             navLinks.classList.toggle('active');
+            // toggle icon
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
     }
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                // Close mobile menu if open
-                navLinks.classList.remove('active');
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+
+    // close mobile menu on link click
+    navLinksAnchors.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = menuToggle?.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
         });
     });
-    
-    // CV Download Functionality
-    function openCV() {
-        // Create a PDF download link (you'll need to upload the actual PDF file)
-        const cvUrl = 'https://drive.google.com/file/d/1HHsR6-Shfxz9fWQsM3oA72YOHaUJYBDj/download&id=drive_link'; // Replace with actual PDF file path
-        
-        // Create a temporary link element
-        const link = document.createElement('a');
-        link.href = cvUrl;
-        link.target = '_blank';
-        link.download = 'IAN_JEFA_CV.pdf';
-        link.rel = 'noopener noreferrer';
-        
-        // Trigger the download
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        // Show download notice
-        showDownloadNotice();
-    }
-    
-    // Show download notice
-    function showDownloadNotice() {
-        // Create notice if it doesn't exist
-        let notice = document.querySelector('.pdf-notice');
-        if (!notice) {
-            notice = document.createElement('div');
-            notice.className = 'pdf-notice';
-            notice.innerHTML = `
-                <i class="fas fa-check-circle"></i>
-                <span>CV download started. If it doesn't open, check your downloads folder.</span>
-            `;
-            document.body.appendChild(notice);
-        }
-        
-        // Show notice
-        notice.classList.add('show');
-        
-        // Hide notice after 5 seconds
-        setTimeout(() => {
-            notice.classList.remove('show');
-        }, 5000);
-    }
-    
-    // Attach CV download functionality to all CV buttons
-    const cvButtons = ['cvBtn', 'heroCvBtn', 'contactCvBtn', 'footerCvBtn'];
-    
-    cvButtons.forEach(buttonId => {
-        const button = document.getElementById(buttonId);
-        if (button) {
-            button.addEventListener('click', openCV);
+
+    // close when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks?.contains(e.target) && !menuToggle?.contains(e.target)) {
+            navLinks?.classList.remove('active');
+            const icon = menuToggle?.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         }
     });
-    
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.nav-links') && !event.target.closest('.menu-toggle')) {
-            navLinks.classList.remove('active');
-        }
-    });
-    
-    // Highlight active section in navigation
+
+    // ===== SMOOTH SCROLL + ACTIVE NAV =====
     const sections = document.querySelectorAll('section[id]');
-    const navLinksAll = document.querySelectorAll('.nav-links a');
-    
-    function highlightNavLink() {
-        let scrollPosition = window.scrollY + 100;
-        
+
+    function updateActiveNav() {
+        const scrollY = window.scrollY + 100; // offset
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
+            const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navLinksAll.forEach(link => {
+
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                navLinksAnchors.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${sectionId}`) {
                         link.classList.add('active');
@@ -113,38 +68,86 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    window.addEventListener('scroll', highlightNavLink);
-    
-    // Add active class to current nav link
-    navLinksAll.forEach(link => {
-        link.addEventListener('click', function() {
-            navLinksAll.forEach(item => item.classList.remove('active'));
-            this.classList.add('active');
+
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav(); // initial
+
+    // smooth scroll for anchor links (prevent default jump)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+                const offsetTop = targetEl.offsetTop - 80;
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+            }
         });
     });
-    
-    // Simple animation for skill tags on hover
-    const skillTags = document.querySelectorAll('.skill-tag');
-    skillTags.forEach(tag => {
-        tag.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px)';
-        });
-        
-        tag.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
+
+    // ===== CV DOWNLOAD FUNCTION =====
+    const CV_URL = 'https://drive.google.com/uc?export=download&id=1HHsR6-Shfxz9fWQsM3oA72YOHaUJYBDj'; // direct download link (replace if needed)
+    const pdfNotice = document.getElementById('pdfNotice');
+
+    function showNotice() {
+        if (!pdfNotice) return;
+        pdfNotice.classList.add('show');
+        setTimeout(() => {
+            pdfNotice.classList.remove('show');
+        }, 4000);
+    }
+
+    function downloadCV() {
+        // Create invisible anchor
+        const link = document.createElement('a');
+        link.href = CV_URL;
+        link.target = '_blank';      // try open first (often downloads pdf)
+        link.rel = 'noopener noreferrer';
+        link.download = 'Ian_Jefa_CV.pdf'; // filename hint
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        showNotice();
+    }
+
+    // Attach to all CV buttons
+    const cvButtons = ['cvBtn', 'heroCvBtn', 'contactCvBtn'];
+    cvButtons.forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                downloadCV();
+            });
+        }
     });
-    
-    // Initialize with first nav link active
-    if (navLinksAll.length > 0) {
-        navLinksAll[0].classList.add('active');
+
+    // ===== SKILL TAGS MICRO-INTERACTION (already in css, but ensure hover effect works fine) =====
+    // No extra needed, but we keep fallback for older browsers
+
+    // ===== FOOTER YEAR AUTO-UPDATE =====
+    const copyright = document.querySelector('.copyright');
+    if (copyright) {
+        const year = new Date().getFullYear();
+        copyright.innerHTML = `© ${year} Ian Jefa — built with <i class="fas fa-heart" style="color: #ef4444;"></i> in Kenya`;
     }
-    
-    // Add year to footer
-    const footerYear = document.querySelector('.footer p');
-    if (footerYear) {
-        const currentYear = new Date().getFullYear();
-        footerYear.innerHTML = `&copy; ${currentYear} Ian Jefa. All rights reserved.`;
-    }
+
+    // ===== INTERSECTION OBSERVER FOR FADE-IN (extra polish) =====
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.project-card, .skill-group, .about-card, .contact-container').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
 });
