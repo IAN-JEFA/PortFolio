@@ -678,11 +678,6 @@ body {
     transform: translateY(-3px);
 }
 
-.contact-graphic {
-    display: flex;
-    justify-content: center;
-}
-
 .code-snippet-mini {
     background: var(--dark);
     color: #cbd5e1;

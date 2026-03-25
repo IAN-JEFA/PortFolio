@@ -128,11 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // No extra needed, but we keep fallback for older browsers
 
     // ===== FOOTER YEAR AUTO-UPDATE =====
-    const copyright = document.querySelector('.copyright');
-    if (copyright) {
-        const year = new Date().getFullYear();
-        copyright.innerHTML = `© ${year} Ian Jefa — built with <i class="fas fa-heart" style="color: #ef4444;"></i> in Kenya`;
-    }
+
 
     // ===== INTERSECTION OBSERVER FOR FADE-IN (extra polish) =====
     const observer = new IntersectionObserver((entries) => {
