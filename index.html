@@ -3,108 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ian Jefa | Software Engineer</title>
+    <title>Ian Jefa — Software Engineer</title>
+    <meta name="description" content="Ian Jefa — Software engineer building scalable systems from Nairobi, Kenya.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">Ian Jefa </a>
-            <div class="nav-links">
-                <a href="#home" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-                <button class="btn btn-cv" id="cvBtn">
-                    <i class="fas fa-file-pdf"></i> Resume
+
+    <!-- ========== CURSOR ========== -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- ========== NOISE OVERLAY ========== -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- ========== NAV ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="nav-logo">
+                <span class="logo-bracket">{</span>
+                <span class="logo-name">IJ</span>
+                <span class="logo-bracket">}</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#about" class="nav-link" data-text="about">about</a>
+                <a href="#skills" class="nav-link" data-text="skills">skills</a>
+                <a href="#projects" class="nav-link" data-text="projects">projects</a>
+                <a href="#contact" class="nav-link" data-text="contact">contact</a>
+                <button class="nav-cta" id="cvBtn">
+                    <span>resume</span>
+                    <i class="fas fa-arrow-up-right-from-square"></i>
                 </button>
             </div>
-            <button class="menu-toggle" aria-label="menu">
-                <i class="fas fa-bars"></i>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ========== HERO ========== -->
     <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Hi, I'm <span class="gradient-text">Ian Jefa</span></h1>
-                <h2 class="hero-subtitle">Software Engineer</h2>
-                <p class="hero-description">I craft robust web applications with modern architectures. Passionate about clean code, scalable systems, and intuitive user experiences.</p>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary">Explore my work</a>
-                    <button class="btn btn-outline" id="heroCvBtn">
-                        <i class="fas fa-download"></i> Download CV
+        <div class="hero-bg-grid" aria-hidden="true"></div>
+        <div class="hero-orb orb-1" aria-hidden="true"></div>
+        <div class="hero-orb orb-2" aria-hidden="true"></div>
+
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="hero-tag reveal-up">
+                    <span class="tag-dot"></span>
+                    <span>Available for opportunities</span>
+                </div>
+
+                <h1 class="hero-headline reveal-up" style="--d:0.1s">
+                    <span class="line">Software that</span>
+                    <span class="line accent-italic">thinks forward.</span>
+                </h1>
+
+                <p class="hero-sub reveal-up" style="--d:0.2s">
+                    I'm <strong>Ian Jefa</strong> — a software engineer from Nairobi who turns complex problems into clean, 
+                    purposeful systems. I write code that scales, designs that breathe, 
+                    and architectures that last.
+                </p>
+
+                <div class="hero-actions reveal-up" style="--d:0.3s">
+                    <a href="#projects" class="btn-primary">
+                        <span>View my work</span>
+                        <div class="btn-arrow">→</div>
+                    </a>
+                    <button class="btn-ghost" id="heroCvBtn">
+                        <i class="fas fa-file-lines"></i>
+                        <span>Download CV</span>
                     </button>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-label">Years coding</span>
+
+                <div class="hero-stack reveal-up" style="--d:0.4s">
+                    <span class="stack-label">// stack</span>
+                    <div class="stack-pills">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>TypeScript</span>
+                        <span>PostgreSQL</span>
+                        <span>Docker</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">8+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">∞</span>
-                        <span class="stat-label">Curiosity</span>
-                    </div>
-                </div>
-                <div class="hero-contact">
-                    <a href="mailto:ianjefah@gmail.com"><i class="fas fa-envelope"></i> ianjefah@gmail.com</a>
-                    <a href="tel:0742053607"><i class="fas fa-phone-alt"></i> +254 742 053607</a>
-                    <span><i class="fas fa-map-marker-alt"></i> Nairobi, KE</span>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="code-card">
-                    <div class="code-dots">
-                        <span></span><span></span><span></span>
+
+            <div class="hero-right reveal-scale" style="--d:0.2s">
+                <div class="terminal-card">
+                    <div class="terminal-bar">
+                        <div class="t-dots">
+                            <span class="t-dot red"></span>
+                            <span class="t-dot yellow"></span>
+                            <span class="t-dot green"></span>
+                        </div>
+                        <span class="t-title">ian@portfolio ~ </span>
                     </div>
-                    <pre><code><span class="code-keyword">const</span> <span class="code-variable">engineer</span> = {
-  name: <span class="code-string">'Ian Jefa'</span>,
-  skill-stack: [<span class="code-string">'React'</span>, <span class="code-string">'Node.js'</span>, <span class="code-string">'TypeScript'</span>, <span class="code-string">'JavaScript'</span>],
-  mission: <span class="code-string">'Build scalable solutions'</span>,
-  <span class="code-function">mentor</span>: () => <span class="code-string">'share knowledge'</span>
-};</code></pre>
+                    <div class="terminal-body" id="terminalBody">
+                        <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd" id="typedCmd"></span><span class="t-cursor">_</span></div>
+                        <div class="t-output" id="terminalOutput"></div>
+                    </div>
                 </div>
-                <div class="floating-shape"></div>
-                <div class="floating-shape two"></div>
+
+                <div class="hero-stat-strip">
+                    <div class="h-stat">
+                        <span class="h-stat-n">3+</span>
+                        <span class="h-stat-l">Years</span>
+                    </div>
+                    <div class="h-divider"></div>
+                    <div class="h-stat">
+                        <span class="h-stat-n">8+</span>
+                        <span class="h-stat-l">Projects</span>
+                    </div>
+                    <div class="h-divider"></div>
+                    <div class="h-stat">
+                        <span class="h-stat-n">∞</span>
+                        <span class="h-stat-l">Curiosity</span>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="scroll-hint">
+            <span>scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
+    <!-- ========== ABOUT ========== -->
+    <section id="about" class="about section">
         <div class="container">
-            <h2 class="section-title">About me</h2>
+            <div class="section-label reveal-up">// 01 — about</div>
+
             <div class="about-grid">
-                <div class="about-text">
-                    <p class="lead">I'm a software engineer with a solid CS foundation and a drive to build products that matter.</p>
-                    <p>I blend backend robustness with frontend finesse from designing SQL schemas to crafting React component libraries. My approach combines analytical thinking with user empathy, ensuring every line of code serves a purpose.</p>
-                    <p>Outside of coding, I explore networking infrastructure, contribute to open source, and mentor aspiring developers. I believe great software emerges from curiosity and collaboration.</p>
-                    <div class="about-highlight">
-                        <i class="fas fa-quote-right"></i>
-                        <p>"Clean code is not just syntax — it's a mindset."</p>
+                <div class="about-headline reveal-up" style="--d:0.1s">
+                    <h2>From curiosity<br><em>to craft.</em></h2>
+                </div>
+
+                <div class="about-body reveal-up" style="--d:0.2s">
+                    <p class="about-lead">
+                        I didn't just learn to code — I learned to <em>think in systems</em>. My CS degree gave me the theory. 
+                        Real projects gave me the scars. Both gave me perspective.
+                    </p>
+                    <p>
+                        Today I build web applications that solve real problems: from e-commerce platforms 
+                        handling cart state without frameworks, to security tools that analyze entropy in real-time. 
+                        I obsess over the intersection of performance, clarity, and user empathy.
+                    </p>
+                    <p>
+                        When I'm not shipping features, I'm exploring network infrastructure, contributing to open source, 
+                        or helping junior developers avoid the mistakes I made. Based in <strong>Nairobi, Kenya</strong> — 
+                        working globally.
+                    </p>
+
+                    <div class="about-quote">
+                        <div class="quote-mark">"</div>
+                        <p>Clean code isn't a style choice. It's a communication act — to your team, your future self, and the machine.</p>
                     </div>
                 </div>
-                <div class="about-card">
-                    <div class="edu-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div>
-                            <h4>BSc. Computer Science</h4>
+
+                <div class="about-cards reveal-up" style="--d:0.3s">
+                    <div class="about-card-item">
+                        <div class="aci-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="aci-text">
+                            <strong>BSc. Computer Science</strong>
+                            <span>Solid theoretical foundation</span>
                         </div>
                     </div>
-                    <div class="edu-item">
-                        <i class="fas fa-trophy"></i>
-                        <div>
-                            <h4>Certified Web Developer</h4>
+                    <div class="about-card-item">
+                        <div class="aci-icon"><i class="fas fa-certificate"></i></div>
+                        <div class="aci-text">
+                            <strong>Certified Web Developer</strong>
+                            <span>Validated full-stack skills</span>
+                        </div>
+                    </div>
+                    <div class="about-card-item">
+                        <div class="aci-icon"><i class="fas fa-network-wired"></i></div>
+                        <div class="aci-text">
+                            <strong>Network & Infrastructure</strong>
+                            <span>CCTV, server setup, radio equipment</span>
+                        </div>
+                    </div>
+                    <div class="about-card-item">
+                        <div class="aci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="aci-text">
+                            <strong>Nairobi, Kenya</strong>
+                            <span>Remote-ready · Open to relocation</span>
                         </div>
                     </div>
                 </div>
@@ -112,189 +198,287 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section bg-soft">
+    <!-- ========== SKILLS ========== -->
+    <section id="skills" class="skills section">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-group">
-                    <div class="skill-group-header">
-                        <i class="fas fa-code"></i>
-                        <h3>Languages & Frameworks</h3>
+            <div class="section-label reveal-up">// 02 — skills</div>
+            <h2 class="section-h reveal-up" style="--d:0.05s">What I bring<br>to the table.</h2>
+
+            <div class="skills-wrapper">
+                <!-- Skill Category -->
+                <div class="skill-block reveal-up" style="--d:0.1s">
+                    <div class="sb-header">
+                        <span class="sb-num">01</span>
+                        <div class="sb-info">
+                            <h3>Languages & Frameworks</h3>
+                            <p>The tools I reach for first</p>
+                        </div>
                     </div>
-                    <div class="skill-cloud">
-                        <span class="skill-chip">JavaScript (ES6+)</span>
-                        <span class="skill-chip">TypeScript</span>
-                        <span class="skill-chip">React</span>
-                        <span class="skill-chip">Node.js</span>
-                        <span class="skill-chip">HTML5/CSS3</span>
-                        <span class="skill-chip">Tailwind</span>
+                    <div class="sb-tags">
+                        <span class="tag hot">JavaScript ES6+</span>
+                        <span class="tag hot">TypeScript</span>
+                        <span class="tag hot">React</span>
+                        <span class="tag hot">Node.js</span>
+                        <span class="tag">HTML5 / CSS3</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">REST APIs</span>
                     </div>
+                    <div class="sb-bar" style="--fill:88%"></div>
                 </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">
-                        <i class="fas fa-database"></i>
-                        <h3>Databases & DevOps</h3>
+
+                <div class="skill-block reveal-up" style="--d:0.15s">
+                    <div class="sb-header">
+                        <span class="sb-num">02</span>
+                        <div class="sb-info">
+                            <h3>Data & Infrastructure</h3>
+                            <p>Where data lives and breathes</p>
+                        </div>
                     </div>
-                    <div class="skill-cloud">
-                        <span class="skill-chip">MySQL</span>
-                        <span class="skill-chip">PostgreSQL</span>
-                        <span class="skill-chip">MongoDB</span>
-                        <span class="skill-chip">Git/GitHub</span>
-                        <span class="skill-chip">Docker (basic)</span>
-                        <span class="skill-chip">Vercel</span>
+                    <div class="sb-tags">
+                        <span class="tag hot">PostgreSQL</span>
+                        <span class="tag hot">MySQL</span>
+                        <span class="tag hot">MongoDB</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Vercel</span>
+                        <span class="tag">Git / GitHub</span>
                     </div>
+                    <div class="sb-bar" style="--fill:75%"></div>
                 </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">
-                        <i class="fas fa-wrench"></i>
-                        <h3>Tools & Workflow</h3>
+
+                <div class="skill-block reveal-up" style="--d:0.2s">
+                    <div class="sb-header">
+                        <span class="sb-num">03</span>
+                        <div class="sb-info">
+                            <h3>Toolchain & Workflow</h3>
+                            <p>How I ship with confidence</p>
+                        </div>
                     </div>
-                    <div class="skill-cloud">
-                        <span class="skill-chip">VS Code</span>
-                        <span class="skill-chip">Postman</span>
-                        <span class="skill-chip">Figma</span>
-                        <span class="skill-chip">Jira</span>
-                        <span class="skill-chip">Packet Tracer</span>
-                        <span class="skill-chip">Agile/Scrum</span>
+                    <div class="sb-tags">
+                        <span class="tag hot">VS Code</span>
+                        <span class="tag hot">Figma</span>
+                        <span class="tag">Postman</span>
+                        <span class="tag">Jira</span>
+                        <span class="tag">Agile / Scrum</span>
+                        <span class="tag">Packet Tracer</span>
                     </div>
+                    <div class="sb-bar" style="--fill:82%"></div>
                 </div>
-                <div class="skill-group">
-                    <div class="skill-group-header">
-                        <i class="fas fa-network-wired"></i>
-                        <h3>Infrastructure & IoT</h3>
+
+                <div class="skill-block reveal-up" style="--d:0.25s">
+                    <div class="sb-header">
+                        <span class="sb-num">04</span>
+                        <div class="sb-info">
+                            <h3>Network & IoT</h3>
+                            <p>Beyond the browser</p>
+                        </div>
                     </div>
-                    <div class="skill-cloud">
-                        <span class="skill-chip">CCTV configuration</span>
-                        <span class="skill-chip">Radio equipment</span>
-                        <span class="skill-chip">Server setup</span>
-                        <span class="skill-chip">Network diagnostics</span>
+                    <div class="sb-tags">
+                        <span class="tag">CCTV Configuration</span>
+                        <span class="tag">Radio Equipment</span>
+                        <span class="tag">Server Setup</span>
+                        <span class="tag">Network Diagnostics</span>
                     </div>
+                    <div class="sb-bar" style="--fill:65%"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
+    <!-- ========== PROJECTS ========== -->
+    <section id="projects" class="projects section">
         <div class="container">
-            <h2 class="section-title">Featured projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-media">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Password Analyzer</h3>
-                        <p>Real-time security scanner that evaluates password strength using entropy analysis and common patterns. Provides actionable feedback.</p>
-                        <div class="project-tech">
-                            <span>JavaScript</span>
-                            <span>Regex</span>
-                            <span>CSS</span>
+            <div class="section-label reveal-up">// 03 — projects</div>
+            <h2 class="section-h reveal-up" style="--d:0.05s">Problems solved.<br>Products shipped.</h2>
+
+            <div class="projects-list">
+
+                <!-- Project 1 -->
+                <article class="project-item reveal-up" style="--d:0.1s">
+                    <div class="pi-number">01</div>
+                    <div class="pi-content">
+                        <div class="pi-top">
+                            <div class="pi-meta">
+                                <span class="pi-type">Security Tool</span>
+                                <div class="pi-status live">Live</div>
+                            </div>
+                            <h3 class="pi-title">Password Analyzer</h3>
+                            <p class="pi-problem">
+                                <strong>Problem:</strong> Most password tools only tell you "weak" or "strong." 
+                                Users didn't understand <em>why</em> their password failed.
+                            </p>
+                            <p class="pi-solution">
+                                <strong>Built:</strong> A real-time entropy-based analyzer that decodes exactly 
+                                which patterns make a password vulnerable — dictionary attacks, sequential characters, 
+                                common substitutions — with actionable fix suggestions.
+                            </p>
                         </div>
-                        <div class="project-links">
-                            <a href="https://ian-jefa.github.io/Password-Analyzer/" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live demo
-                            </a>
-                            <a href="https://github.com/ian-jefa/Password-Analyzer" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> Source
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-media">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Shoe Haven (E‑commerce)</h3>
-                        <p>Full-featured sneaker store with cart, wishlist, and responsive product grid. State managed with vanilla JS, persisted via localStorage.</p>
-                        <div class="project-tech">
-                            <span>HTML5</span>
-                            <span>CSS Grid</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://ian-jefa.github.io/Shoe-Haven/" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live demo
-                            </a>
-                            <a href="https://github.com/ian-jefa/Shoe-Haven" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> Code
-                            </a>
+                        <div class="pi-bottom">
+                            <div class="pi-stack">
+                                <span>JavaScript</span><span>Regex</span><span>Entropy Analysis</span><span>CSS3</span>
+                            </div>
+                            <div class="pi-links">
+                                <a href="https://ian-jefa.github.io/Password-Analyzer/" target="_blank" rel="noopener" class="pi-link primary">
+                                    <span>Live Demo</span><i class="fas fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="https://github.com/ian-jefa/Password-Analyzer" target="_blank" rel="noopener" class="pi-link">
+                                    <i class="fab fa-github"></i><span>Source</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-media">
-                        <i class="fas fa-gavel"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Advocate Portfolio</h3>
-                        <p>Single-page site for a law firm, featuring smooth scroll, animated sections, and semantic HTML. Built with pure CSS and JS.</p>
-                        <div class="project-tech">
-                            <span>SPA</span>
-                            <span>Flexbox</span>
-                            <span>Intersection Observer</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://ian-jefa.github.io/Advocate-PortFolio/" target="_blank" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live demo
-                            </a>
-                            <a href="https://github.com/ian-jefa/Advocate-PortFolio" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> Repo
-                            </a>
+                    <div class="pi-visual">
+                        <div class="pi-mockup shield">
+                            <i class="fas fa-shield-halved"></i>
+                            <div class="pi-glow"></div>
                         </div>
                     </div>
-                </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-item reveal-up" style="--d:0.15s">
+                    <div class="pi-number">02</div>
+                    <div class="pi-content">
+                        <div class="pi-top">
+                            <div class="pi-meta">
+                                <span class="pi-type">E-commerce</span>
+                                <div class="pi-status live">Live</div>
+                            </div>
+                            <h3 class="pi-title">Shoe Haven</h3>
+                            <p class="pi-problem">
+                                <strong>Problem:</strong> Building a real shopping experience without a framework — 
+                                cart state, wishlist persistence, and filtering — is harder than it sounds.
+                            </p>
+                            <p class="pi-solution">
+                                <strong>Built:</strong> A fully functional sneaker store with cart management, 
+                                persistent wishlist via localStorage, responsive CSS Grid layout, and 
+                                zero external dependencies. Pure JS, pure craft.
+                            </p>
+                        </div>
+                        <div class="pi-bottom">
+                            <div class="pi-stack">
+                                <span>HTML5</span><span>CSS Grid</span><span>Vanilla JS</span><span>localStorage</span>
+                            </div>
+                            <div class="pi-links">
+                                <a href="https://ian-jefa.github.io/Shoe-Haven/" target="_blank" rel="noopener" class="pi-link primary">
+                                    <span>Live Demo</span><i class="fas fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="https://github.com/ian-jefa/Shoe-Haven" target="_blank" rel="noopener" class="pi-link">
+                                    <i class="fab fa-github"></i><span>Code</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pi-visual">
+                        <div class="pi-mockup shop">
+                            <i class="fas fa-bag-shopping"></i>
+                            <div class="pi-glow"></div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-item reveal-up" style="--d:0.2s">
+                    <div class="pi-number">03</div>
+                    <div class="pi-content">
+                        <div class="pi-top">
+                            <div class="pi-meta">
+                                <span class="pi-type">Client Site</span>
+                                <div class="pi-status live">Live</div>
+                            </div>
+                            <h3 class="pi-title">Advocate Portfolio</h3>
+                            <p class="pi-problem">
+                                <strong>Problem:</strong> A law firm needed a professional web presence that conveyed 
+                                authority and trust — without the cost of a heavy CMS.
+                            </p>
+                            <p class="pi-solution">
+                                <strong>Built:</strong> A performant SPA with semantic HTML, smooth scroll navigation, 
+                                Intersection Observer-triggered animations, and accessibility-first markup. 
+                                No frameworks. 100% custom.
+                            </p>
+                        </div>
+                        <div class="pi-bottom">
+                            <div class="pi-stack">
+                                <span>SPA</span><span>Flexbox</span><span>Intersection Observer</span><span>Semantic HTML</span>
+                            </div>
+                            <div class="pi-links">
+                                <a href="https://ian-jefa.github.io/Advocate-PortFolio/" target="_blank" rel="noopener" class="pi-link primary">
+                                    <span>Live Demo</span><i class="fas fa-arrow-up-right-from-square"></i>
+                                </a>
+                                <a href="https://github.com/ian-jefa/Advocate-PortFolio" target="_blank" rel="noopener" class="pi-link">
+                                    <i class="fab fa-github"></i><span>Repo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pi-visual">
+                        <div class="pi-mockup law">
+                            <i class="fas fa-scale-balanced"></i>
+                            <div class="pi-glow"></div>
+                        </div>
+                    </div>
+                </article>
+
             </div>
-            <div class="projects-more">
-                <a href="https://github.com/ian-jefa" target="_blank" class="btn btn-outline">
-                    <i class="fab fa-github"></i> See all on GitHub
+
+            <div class="projects-cta reveal-up">
+                <a href="https://github.com/ian-jefa" target="_blank" rel="noopener" class="btn-outline-dark">
+                    <i class="fab fa-github"></i>
+                    <span>All projects on GitHub</span>
+                    <div class="btn-arrow">→</div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section bg-soft">
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="contact section">
         <div class="container">
-            <h2 class="section-title">Let's connect</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Collaborate · build · innovate</h3>
-                    <p>I'm currently open to freelance projects, developer roles, and tech collaborations. Whether you have a project in mind or just want to say hi, I'll get back to you!</p>
-                    <div class="contact-details">
-                        <div class="detail-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <span>Email</span>
-                                <a href="mailto:ianjefah@gmail.com">ianjefah@gmail.com</a>
-                            </div>
+            <div class="section-label reveal-up">// 04 — contact</div>
+
+            <div class="contact-grid">
+                <div class="contact-left reveal-up" style="--d:0.05s">
+                    <h2>Let's build<br><em>something real.</em></h2>
+                    <p>
+                        Open to freelance projects, full-time roles, and technical collaborations.
+                        If you have a hard problem and need a sharp engineer — let's talk.
+                    </p>
+                    <a href="mailto:ianjefa102@gmail.com" class="contact-email">
+                        ianjefa102@gmail.com
+                        <span class="email-arrow">↗</span>
+                    </a>
+                </div>
+
+                <div class="contact-right reveal-up" style="--d:0.15s">
+                    <div class="contact-details-list">
+                        <div class="cd-item">
+                            <span class="cd-label">// phone</span>
+                            <a href="tel:+254742053607" class="cd-value">+254 742 053607</a>
                         </div>
-                        <div class="detail-item">
-                            <i class="fas fa-phone-alt"></i>
-                            <div>
-                                <span>Phone</span>
-                                <a href="tel:0742053607">+254 742 053607</a>
-                            </div>
+                        <div class="cd-item">
+                            <span class="cd-label">// location</span>
+                            <span class="cd-value">Nairobi, Kenya · Remote Ready</span>
                         </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-pin"></i>
-                            <div>
-                                <span>Location</span>
-                                <span>Nairobi, Kenya (remote ready)</span>
-                            </div>
+                        <div class="cd-item">
+                            <span class="cd-label">// availability</span>
+                            <span class="cd-value available"><span class="pulse-dot"></span> Currently available</span>
                         </div>
                     </div>
-                    <div class="contact-social">
-                        <a href="https://www.linkedin.com/in/ian-jefa-1128a839a/" target="_blank" class="social-btn linkedin">
-                            <i class="fab fa-linkedin-in"></i> LinkedIn
+
+                    <div class="contact-links">
+                        <a href="https://github.com/ian-jefa" target="_blank" rel="noopener" class="clink github">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                            <i class="fas fa-arrow-up-right-from-square clink-arrow"></i>
                         </a>
-                        <a href="https://github.com/ian-jefa" target="_blank" class="social-btn github">
-                            <i class="fab fa-github"></i> GitHub
+                        <a href="https://www.linkedin.com/in/ian-jefa-1128a839a/" target="_blank" rel="noopener" class="clink linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span>LinkedIn</span>
+                            <i class="fas fa-arrow-up-right-from-square clink-arrow"></i>
                         </a>
-                        <button class="social-btn cv" id="contactCvBtn">
-                            <i class="fas fa-file-pdf"></i> Download CV
+                        <button class="clink cv" id="contactCvBtn">
+                            <i class="fas fa-file-lines"></i>
+                            <span>Download CV</span>
+                            <i class="fas fa-download clink-arrow"></i>
                         </button>
                     </div>
                 </div>
@@ -302,26 +486,28 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <p class="copyright"> © 2025 Ian Jefa </p>
+            <div class="footer-inner">
+                <a href="#home" class="footer-logo">
+                    <span class="logo-bracket">{</span>IJ<span class="logo-bracket">}</span>
+                </a>
+                <nav class="footer-nav">
+                    <a href="#about">about</a>
+                    <a href="#skills">skills</a>
+                    <a href="#projects">projects</a>
+                    <a href="#contact">contact</a>
+                </nav>
+                <p class="footer-copy">© <span id="year"></span> Ian Jefa — Engineered with intention.</p>
             </div>
         </div>
     </footer>
 
-    <!-- PDF Notice -->
+    <!-- ========== PDF NOTICE ========== -->
     <div class="pdf-notice" id="pdfNotice">
-        <i class="fas fa-check-circle"></i>
-        <span>CV download started. Check your downloads.</span>
+        <i class="fas fa-circle-check"></i>
+        <span>CV download started!</span>
     </div>
 
     <script src="script.js"></script>
