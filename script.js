@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ─── CV DOWNLOAD ───────────────────────────────────────────────
-    const CV_URL   = 'https://drive.google.com/uc?export=download&id=1HHsR6-Shfxz9fWQsM3oA72YOHaUJYBDj';
+    const CV_URL = 'https://drive.google.com/uc?export=download&id=17NIwLNotrZ61NUkHGQ08gbIGB-3PG8p3';
     const pdfNote  = $('#pdfNotice');
 
     function downloadCV() {
