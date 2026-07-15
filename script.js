@@ -1,9 +1,3 @@
-/**
- * Ian Jefa — Portfolio Script
- * Features: Custom cursor · Navbar scroll · Mobile nav ·
- *           Terminal typing effect · Smooth scroll ·
- *           Intersection Observer reveals · CV download
- */
 
 'use strict';
 
@@ -178,7 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 cmd: 'git log --oneline',
-                output: `<span class="t-num">a1b2c3d</span> <span class="t-str">feat: password entropy analyzer</span><br>
+                output: `<span class="t-num">f3c9a12</span> <span class="t-str">feat: task manager standalone (vercel)</span><br>
+<span class="t-num">a1b2c3d</span> <span class="t-str">feat: password entropy analyzer</span><br>
 <span class="t-num">d4e5f6a</span> <span class="t-str">feat: shoe haven e-commerce</span><br>
 <span class="t-num">7g8h9i0</span> <span class="t-str">feat: advocate portfolio site</span>`
             },
@@ -239,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ─── CV DOWNLOAD ───────────────────────────────────────────────
-    const CV_URL = 'https://drive.google.com/uc?export=download&id=17NIwLNotrZ61NUkHGQ08gbIGB-3PG8p3';
+    const CV_URL   = 'https://drive.google.com/uc?export=download&id=1HHsR6-Shfxz9fWQsM3oA72YOHaUJYBDj';
     const pdfNote  = $('#pdfNotice');
 
     function downloadCV() {
