@@ -1,8 +1,4 @@
-/* ============================================================
-   Ian Jefa — Portfolio Stylesheet
-   Design: Dark editorial with amber accent
-   Fonts: DM Serif Display + Outfit + JetBrains Mono
-   ============================================================ */
+
 
 /* ---- RESET ---- */
 *, *::before, *::after {
@@ -954,6 +950,7 @@ img { display: block; max-width: 100%; }
 .pi-mockup.shield { background: rgba(245,166,35,0.1); color: var(--amber); }
 .pi-mockup.shop   { background: rgba(96,165,250,0.1); color: #60a5fa; }
 .pi-mockup.law    { background: rgba(167,139,250,0.1); color: #a78bfa; }
+.pi-mockup.tasks  { background: rgba(52,211,153,0.1); color: #34d399; }
 
 .pi-glow {
     position: absolute;
@@ -965,6 +962,7 @@ img { display: block; max-width: 100%; }
 .pi-mockup.shield .pi-glow { background: radial-gradient(circle, rgba(245,166,35,0.2), transparent); }
 .pi-mockup.shop .pi-glow   { background: radial-gradient(circle, rgba(96,165,250,0.2), transparent); }
 .pi-mockup.law .pi-glow    { background: radial-gradient(circle, rgba(167,139,250,0.2), transparent); }
+.pi-mockup.tasks .pi-glow  { background: radial-gradient(circle, rgba(52,211,153,0.2), transparent); }
 .project-item:hover .pi-glow { opacity: 1; }
 
 .projects-cta {
