@@ -150,89 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $$('.reveal-up, .reveal-scale').forEach(el => revealObserver.observe(el));
 
-    // ─── TERMINAL TYPING EFFECT ────────────────────────────────────
-    const typedCmd    = $('#typedCmd');
-    const termOutput  = $('#terminalOutput');
-    const termBody    = $('#terminalBody');
-
-    if (typedCmd && termOutput) {
-        // Sequence of commands to cycle through
-        const sequences = [
-            {
-                cmd: 'whoami',
-                output: `<span class="t-val">ian_jefa</span> — <span class="t-str">Software Engineer, Nairobi KE</span>`
-            },
-            {
-                cmd: 'cat skills.json',
-                output: `{<br>
-&nbsp;&nbsp;<span class="t-key">"primary"</span>: [<span class="t-str">"React"</span>, <span class="t-str">"Node.js"</span>, <span class="t-str">"TypeScript"</span>],<br>
-&nbsp;&nbsp;<span class="t-key">"database"</span>: [<span class="t-str">"PostgreSQL"</span>, <span class="t-str">"MongoDB"</span>],<br>
-&nbsp;&nbsp;<span class="t-key">"yoe"</span>: <span class="t-num">3</span><br>
-}`
-            },
-            {
-                cmd: 'git log --oneline',
-                output: `<span class="t-num">f3c9a12</span> <span class="t-str">feat: task manager standalone (vercel)</span><br>
-<span class="t-num">a1b2c3d</span> <span class="t-str">feat: password entropy analyzer</span><br>
-<span class="t-num">d4e5f6a</span> <span class="t-str">feat: shoe haven e-commerce</span><br>
-<span class="t-num">7g8h9i0</span> <span class="t-str">feat: advocate portfolio site</span>`
-            },
-            {
-                cmd: 'echo $STATUS',
-                output: `<span class="t-val">OPEN_TO_WORK</span>=<span class="t-num">true</span> · remote-ready`
-            }
-        ];
-
-        let seqIndex  = 0;
-        let charIndex = 0;
-        let phase     = 'typing'; // 'typing' | 'showing' | 'clearing'
-        let timer;
-        const TYPING_SPEED = 60;
-        const SHOW_DELAY   = 2200;
-        const CLEAR_DELAY  = 500;
-
-        function typeChar() {
-            const seq = sequences[seqIndex];
-            if (charIndex < seq.cmd.length) {
-                typedCmd.textContent += seq.cmd[charIndex];
-                charIndex++;
-                timer = setTimeout(typeChar, TYPING_SPEED + Math.random() * 40);
-            } else {
-                // Command done — show output
-                phase = 'showing';
-                timer = setTimeout(showOutput, 300);
-            }
-        }
-
-        function showOutput() {
-            const seq = sequences[seqIndex];
-            termOutput.innerHTML = seq.output;
-            termOutput.style.opacity = '0';
-            termOutput.style.transition = 'opacity 0.35s';
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    termOutput.style.opacity = '1';
-                });
-            });
-            timer = setTimeout(clearSequence, SHOW_DELAY);
-        }
-
-        function clearSequence() {
-            termOutput.style.opacity = '0';
-            timer = setTimeout(() => {
-                termOutput.innerHTML = '';
-                typedCmd.textContent = '';
-                charIndex  = 0;
-                seqIndex   = (seqIndex + 1) % sequences.length;
-                phase      = 'typing';
-                timer = setTimeout(typeChar, CLEAR_DELAY);
-            }, 350);
-        }
-
-        // Start after a short delay to let hero animate in
-        timer = setTimeout(typeChar, 1200);
-    }
-
     // ─── CV DOWNLOAD ───────────────────────────────────────────────
     const CV_URL   = 'https://drive.google.com/uc?export=download&id=1HHsR6-Shfxz9fWQsM3oA72YOHaUJYBDj';
     const pdfNote  = $('#pdfNotice');
@@ -258,12 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = $('#' + id);
         if (btn) btn.addEventListener('click', e => { e.preventDefault(); downloadCV(); });
     });
-
-    // ─── SKILL-BAR ANIMATION (triggered by observer) ───────────────
-    // The CSS handles the animation via `.revealed .sb-bar::after`,
-    // which transitions from scaleX(0) to scaleX(1).
-    // The reveal observer above will add `.revealed` to `.skill-block`,
-    // triggering the CSS bar fill automatically.
 
     // ─── PROJECT CARD TILT (subtle parallax on hover) ──────────────
     $$('.project-item').forEach(card => {

@@ -47,8 +47,6 @@
     <!-- ========== HERO ========== -->
     <section id="home" class="hero">
         <div class="hero-bg-grid" aria-hidden="true"></div>
-        <div class="hero-orb orb-1" aria-hidden="true"></div>
-        <div class="hero-orb orb-2" aria-hidden="true"></div>
 
         <div class="hero-inner">
             <div class="hero-left">
@@ -91,18 +89,38 @@
             </div>
 
             <div class="hero-right reveal-scale" style="--d:0.2s">
-                <div class="terminal-card">
-                    <div class="terminal-bar">
-                        <div class="t-dots">
-                            <span class="t-dot red"></span>
-                            <span class="t-dot yellow"></span>
-                            <span class="t-dot green"></span>
-                        </div>
-                        <span class="t-title">ian@portfolio ~ </span>
+                <div class="hero-diagram">
+                    <div class="hd-head">
+                        <span class="hd-live"><span class="pulse-dot"></span>in progress</span>
+                        <span class="hd-caption">software lifecycle</span>
                     </div>
-                    <div class="terminal-body" id="terminalBody">
-                        <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd" id="typedCmd"></span><span class="t-cursor">_</span></div>
-                        <div class="t-output" id="terminalOutput"></div>
+
+                    <div class="hd-flow">
+                        <div class="hd-node">
+                            <span class="hd-node-icon"><i class="fas fa-lightbulb"></i></span>
+                            <span class="hd-node-label">Plan</span>
+                        </div>
+                        <div class="hd-edge"><span class="hd-pulse"></span></div>
+                        <div class="hd-node">
+                            <span class="hd-node-icon"><i class="fas fa-code"></i></span>
+                            <span class="hd-node-label">Build</span>
+                        </div>
+                        <div class="hd-edge"><span class="hd-pulse" style="--edge-d:0.6s"></span></div>
+                        <div class="hd-node">
+                            <span class="hd-node-icon"><i class="fas fa-vial"></i></span>
+                            <span class="hd-node-label">Test</span>
+                        </div>
+                        <div class="hd-edge"><span class="hd-pulse" style="--edge-d:1.2s"></span></div>
+                        <div class="hd-node">
+                            <span class="hd-node-icon"><i class="fas fa-rocket"></i></span>
+                            <span class="hd-node-label">Ship</span>
+                        </div>
+                    </div>
+
+                    <div class="hd-meta">
+                        <div class="hd-meta-row"><span>plan</span><span>Jira · Agile/Scrum</span></div>
+                        <div class="hd-meta-row"><span>test</span><span>Postman · manual QA</span></div>
+                        <div class="hd-meta-row"><span>ship</span><span>Vercel · Railway</span></div>
                     </div>
                 </div>
 
@@ -222,7 +240,6 @@
                         <span class="tag">Tailwind CSS</span>
                         <span class="tag">REST APIs</span>
                     </div>
-                    <div class="sb-bar" style="--fill:88%"></div>
                 </div>
 
                 <div class="skill-block reveal-up" style="--d:0.15s">
@@ -240,7 +257,6 @@
                         <span class="tag">Vercel</span>
                         <span class="tag">Git / GitHub</span>
                     </div>
-                    <div class="sb-bar" style="--fill:75%"></div>
                 </div>
 
                 <div class="skill-block reveal-up" style="--d:0.2s">
@@ -259,7 +275,6 @@
                         <span class="tag">Agile / Scrum</span>
                         <span class="tag">Packet Tracer</span>
                     </div>
-                    <div class="sb-bar" style="--fill:82%"></div>
                 </div>
 
                 <div class="skill-block reveal-up" style="--d:0.25s">
@@ -276,7 +291,6 @@
                         <span class="tag">Server Setup</span>
                         <span class="tag">Network Diagnostics</span>
                     </div>
-                    <div class="sb-bar" style="--fill:65%"></div>
                 </div>
             </div>
         </div>
@@ -327,7 +341,6 @@
                     <div class="pi-visual">
                         <div class="pi-mockup shield">
                             <i class="fas fa-shield-halved"></i>
-                            <div class="pi-glow"></div>
                         </div>
                     </div>
                 </article>
@@ -369,7 +382,6 @@
                     <div class="pi-visual">
                         <div class="pi-mockup shop">
                             <i class="fas fa-bag-shopping"></i>
-                            <div class="pi-glow"></div>
                         </div>
                     </div>
                 </article>
@@ -411,7 +423,6 @@
                     <div class="pi-visual">
                         <div class="pi-mockup law">
                             <i class="fas fa-scale-balanced"></i>
-                            <div class="pi-glow"></div>
                         </div>
                     </div>
                 </article>
@@ -457,7 +468,6 @@
                     <div class="pi-visual">
                         <div class="pi-mockup tasks">
                             <i class="fas fa-list-check"></i>
-                            <div class="pi-glow"></div>
                         </div>
                     </div>
                 </article>
